@@ -69,7 +69,7 @@ export async function playGreeting(ws: WebSocket, sessionId: string): Promise<vo
 }
 
 // Speak one sentence. Returns false if aborted mid-way.
-function speakOne(ws: WebSocket, sessionId: string, myGen: number, sentence: string, index: number): Promise<boolean> {
+function speakOne(ws: WebSocket, sessionId: string, myGen: number, sentence: string, index: number, lang?: string): Promise<boolean> {
   if (gen(sessionId) !== myGen) return Promise.resolve(false);
 
   // Capture responseId NOW — before any async work — so stale chunks can't steal the new ID
@@ -102,7 +102,7 @@ function speakOne(ws: WebSocket, sessionId: string, myGen: number, sentence: str
 
     ttsService.on('chunk', onChunk);
     ttsService.on('done', onDone);
-    ttsService.synthesize(sessionId, sentence, index);
+    ttsService.synthesize(sessionId, sentence, index, lang);
   });
 }
 
@@ -139,10 +139,9 @@ export async function handleFinalTranscript(
 
       const idx = sentenceIndex++;
       const sentence = data.sentence;
-      // Chain TTS sequentially — sentence N+1 starts only after N finishes
       ttsChain = ttsChain.then((ok) => {
         if (!ok || gen(sessionId) !== myGen) return false;
-        return speakOne(ws, sessionId, myGen, sentence, idx);
+        return speakOne(ws, sessionId, myGen, sentence, idx, session.language);
       });
     };
 

@@ -16,9 +16,18 @@ export function useVoiceRecorder() {
   const vadRef          = useRef<{ start: () => Promise<void>; destroy: () => Promise<void> } | null>(null);
   const greetedRef      = useRef(false);
   const bargeInTimeRef  = useRef(0);
-  const currentSegmentIsBargeIn = useRef(false); // tracks if THIS speech segment was a barge-in
+  const agentStartedSpeakingAt = useRef(0); // timestamp when agent started speaking
+  const currentSegmentIsBargeIn = useRef(false);
   const agentStatusRef  = useRef('idle');
   agentStatusRef.current = useAgentStore((s) => s.status);
+
+  // Track when agent starts speaking to apply echo mute window
+  const prevStatus = useRef('idle');
+  const agentStatus = useAgentStore((s) => s.status);
+  if (prevStatus.current !== 'speaking' && agentStatus === 'speaking') {
+    agentStartedSpeakingAt.current = Date.now();
+  }
+  prevStatus.current = agentStatus;
 
   function float32ToWavBase64(samples: Float32Array, sampleRate = 16000): string {
     const buf = new ArrayBuffer(44 + samples.length * 2);
@@ -49,9 +58,9 @@ export function useVoiceRecorder() {
         onnxWASMBasePath: '/',
         model: 'legacy',
         startOnLoad: true,
-        positiveSpeechThreshold: 0.75,
-        negativeSpeechThreshold: 0.55,
-        minSpeechMs: 800,   // ignore clips under 800ms — filters noise/breathing
+        positiveSpeechThreshold: 0.85,  // high threshold reduces echo pickup
+        negativeSpeechThreshold: 0.6,
+        minSpeechMs: 800,
         preSpeechPadMs: 150,
         redemptionMs: 400,
 
@@ -60,16 +69,21 @@ export function useVoiceRecorder() {
           const isAgentActive = status === 'speaking' || status === 'processing';
           const sinceLastBargeIn = Date.now() - bargeInTimeRef.current;
           const inCooldown = sinceLastBargeIn < BARGE_IN_COOLDOWN_MS;
+          // Echo mute: ignore VAD for 1.5s after agent starts speaking (echo delay)
+          const sinceAgentStarted = Date.now() - agentStartedSpeakingAt.current;
+          const inEchoWindow = sinceAgentStarted < 1500;
 
-          if (isAgentActive) {
+          if (isAgentActive && inEchoWindow) {
+            // Likely echo from speakers — ignore silently
+            currentSegmentIsBargeIn.current = true;
+          } else if (isAgentActive) {
             console.log('[vad] 🛑 Barge-in — interrupting agent');
             bargeInTimeRef.current = Date.now();
-            currentSegmentIsBargeIn.current = true; // mark this segment as barge-in
+            currentSegmentIsBargeIn.current = true;
             sendInterrupt();
-            // Don't send audio_start — this segment will be discarded
           } else if (inCooldown) {
-            console.log(`[vad] ⏳ Cooldown — skipping segment`);
-            currentSegmentIsBargeIn.current = true; // also discard cooldown segments
+            console.log('[vad] ⏳ Cooldown — skipping segment');
+            currentSegmentIsBargeIn.current = true;
           } else {
             currentSegmentIsBargeIn.current = false;
             console.log('[vad] 🎤 Speech start');

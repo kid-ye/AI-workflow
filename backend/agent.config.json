@@ -1,0 +1,117 @@
+{
+  "_comment": "Agent configuration — all API parameters in one place. Load this file to configure which STT/TTS/LLM the agent uses.",
+
+  "agent": {
+    "name": "Aria",
+    "greeting": "Namaste! Main Aria hoon, aapki Airtel assistant. Main aapki help kar sakti hoon data balance, recharge, bill payment, network issues, aur plan upgrade mein. Aap kya jaanna chahte hain?",
+    "defaultLanguage": "hi-IN",
+    "historyTurns": 10
+  },
+
+  "stt": {
+    "provider": "sarvam",
+    "fallbackProvider": "openai_whisper",
+
+    "sarvam": {
+      "endpoint": "https://api.sarvam.ai/speech-to-text",
+      "model": "saarika:v2.5",
+      "audioFormat": "audio/wav",
+      "audioFilename": "audio.wav",
+      "useLangHint": true,
+      "_comment_model": "Available: saarika:v1, saarika:v2, saarika:v2.5 (latest)",
+      "_comment_lang": "language_code sent only when useLangHint=true and previous turn language is known"
+    },
+
+    "openai_whisper": {
+      "endpoint": "https://api.openai.com/v1/audio/transcriptions",
+      "model": "whisper-1",
+      "responseFormat": "verbose_json",
+      "prompt": "Airtel customer care. Hindi, English, or Hinglish.",
+      "audioFormat": "audio/wav",
+      "audioFilename": "audio.wav",
+      "_comment_model": "Available: whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe"
+    },
+
+    "validation": {
+      "minAudioBytes": 16044,
+      "_comment": "44 byte WAV header + 16000 samples = ~0.5s minimum audio",
+      "hallucinations": [
+        "thank you", "thanks", "bye", "bye.", "bye bye", "goodbye",
+        "oh", "oh.", "ah", "um", "hmm", "you", "the", "a", "i",
+        "ok", "okay", "yes", "no", "sure", "right", "alright",
+        "الله أكبر", "سبحان الله", "amen", "ameen", "...", ". . .", "…"
+      ]
+    }
+  },
+
+  "tts": {
+    "provider": "sarvam",
+
+    "sarvam": {
+      "endpoint": "https://api.sarvam.ai/text-to-speech",
+      "model": "bulbul:v2",
+      "speaker": "arya",
+      "pitch": 0,
+      "pace": 1.05,
+      "loudness": 1.5,
+      "speechSampleRate": 22050,
+      "enablePreprocessing": true,
+      "languageHindi": "hi-IN",
+      "languageEnglish": "en-IN",
+      "devanagariThreshold": 0.3,
+      "_comment_model": "Available: bulbul:v2, bulbul:v3-beta, bulbul:v3",
+      "_comment_speaker": "Female: anushka, manisha, vidya, arya, ritu, priya | Male: abhilash, karun, hitesh, anand",
+      "_comment_pitch": "Range: -0.75 to 0.75",
+      "_comment_pace": "Range: 0.5 to 2.0 — 1.0 is normal speed",
+      "_comment_loudness": "Range: 0.5 to 2.0",
+      "_comment_sampleRate": "Options: 8000, 16000, 22050"
+    }
+  },
+
+  "llm": {
+    "provider": "openai",
+
+    "openai": {
+      "endpoint": "https://api.openai.com/v1/chat/completions",
+      "model": "gpt-4.1",
+      "stream": true,
+      "maxTokens": 120,
+      "temperature": 0.5,
+      "_comment_model": "Available on this account: gpt-4.1, gpt-4.1-mini, gpt-4.1-nano, gpt-4o, gpt-4o-mini, gpt-4-turbo",
+      "_comment_maxTokens": "120 = ~2 short sentences. Increase for longer responses.",
+      "_comment_temperature": "0.0-1.0 — lower is more deterministic, higher is more creative",
+
+      "systemPrompt": {
+        "voiceRules": [
+          "Maximum 2 short sentences. Never more.",
+          "No bullet points, lists, markdown, or symbols.",
+          "No filler: never start with Certainly, Sure, Of course, I understand.",
+          "Speak numbers as words.",
+          "Sound warm and human."
+        ],
+        "scopeRule": "For GENERAL questions about Airtel services answer them regardless of user's current plan. Out of scope topics: reply in one sentence that you only help with Airtel services.",
+        "verificationRule": "NEVER ask for mobile number or verification — account is already verified."
+      }
+    }
+  },
+
+  "vad": {
+    "provider": "silero",
+    "model": "silero_vad_legacy.onnx",
+    "runtime": "browser_onnx_wasm",
+    "baseAssetPath": "/",
+    "onnxWASMBasePath": "/",
+    "positiveSpeechThreshold": 0.85,
+    "negativeSpeechThreshold": 0.6,
+    "minSpeechMs": 800,
+    "preSpeechPadMs": 150,
+    "redemptionMs": 400,
+    "echoMuteWindowMs": 1500,
+    "bargeInCooldownMs": 1200,
+    "_comment_model": "Available: silero_vad_legacy.onnx (v4), silero_vad_v5.onnx",
+    "_comment_positive": "Confidence threshold to START speech detection (0-1)",
+    "_comment_negative": "Confidence threshold to END speech detection (0-1)",
+    "_comment_minSpeechMs": "Clips shorter than this are discarded as noise",
+    "_comment_echoMute": "Ignore VAD for this many ms after agent starts speaking (prevents echo triggers)"
+  }
+}
