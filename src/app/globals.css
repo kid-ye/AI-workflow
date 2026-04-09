@@ -30,7 +30,7 @@
   --accent-foreground: #0A0A0A;
   --border: #262626;
   --input: #1A1A1A;
-  --card: #0F0F0F;
+  --card: #141414;
   --card-foreground: #FAFAFA;
   --ring: #FF3D00;
   --radius: 0px;
@@ -42,13 +42,51 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
   html {
     @apply font-sans;
+    color-scheme: dark;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans tracking-tighter;
+  }
+  
+  /* Force proper styling for all form inputs with maximum specificity */
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  textarea,
+  select {
+    background-color: #1A1A1A !important;
+    color: #FAFAFA !important;
+    -webkit-text-fill-color: #FAFAFA !important;
+  }
+  
+  /* Handle autofill states */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #1A1A1A inset !important;
+    -webkit-text-fill-color: #FAFAFA !important;
+    caret-color: #FAFAFA !important;
+  }
+  
+  input::placeholder,
+  textarea::placeholder {
+    color: #737373 !important;
+    opacity: 0.7 !important;
+    -webkit-text-fill-color: #737373 !important;
+  }
+  
+  /* Ensure select options are visible */
+  select option {
+    background-color: #1A1A1A !important;
+    color: #FAFAFA !important;
+  }
+  
+  /* Force caret color */
+  input, textarea {
+    caret-color: #FAFAFA !important;
   }
 }
 
@@ -56,4 +94,293 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Premium Organic Sphere Animations */
+  
+  /* Organic Blob Morphing - Subtle Circular Variation */
+  @keyframes blob-morph {
+    0%, 100% {
+      border-radius: 48% 52% 51% 49% / 50% 48% 52% 50%;
+    }
+    25% {
+      border-radius: 51% 49% 48% 52% / 49% 51% 49% 51%;
+    }
+    50% {
+      border-radius: 49% 51% 52% 48% / 52% 49% 51% 48%;
+    }
+    75% {
+      border-radius: 52% 48% 49% 51% / 48% 52% 48% 52%;
+    }
+  }
+  
+  /* Subtle Breathing Scale */
+  @keyframes sphere-breathe {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+    }
+    25% {
+      transform: scale(1.03) rotate(2deg);
+    }
+    50% {
+      transform: scale(0.98) rotate(0deg);
+    }
+    75% {
+      transform: scale(1.02) rotate(-2deg);
+    }
+  }
+  
+  /* Energy Flow - Primary Gradient */
+  @keyframes energy-flow-1 {
+    0% {
+      background-position: 0% 0%;
+      opacity: 1;
+    }
+    33% {
+      background-position: 100% 100%;
+      opacity: 0.8;
+    }
+    66% {
+      background-position: 50% 50%;
+      opacity: 0.9;
+    }
+    100% {
+      background-position: 0% 0%;
+      opacity: 1;
+    }
+  }
+  
+  /* Energy Flow - Secondary Gradient */
+  @keyframes energy-flow-2 {
+    0% {
+      background-position: 100% 100%;
+      opacity: 0.7;
+    }
+    33% {
+      background-position: 0% 50%;
+      opacity: 0.9;
+    }
+    66% {
+      background-position: 50% 0%;
+      opacity: 0.6;
+    }
+    100% {
+      background-position: 100% 100%;
+      opacity: 0.7;
+    }
+  }
+  
+  /* Energy Flow - Tertiary Gradient */
+  @keyframes energy-flow-3 {
+    0% {
+      background-position: 50% 50%;
+      opacity: 0.5;
+    }
+    50% {
+      background-position: 100% 0%;
+      opacity: 0.8;
+    }
+    100% {
+      background-position: 50% 50%;
+      opacity: 0.5;
+    }
+  }
+  
+  /* Glossy Light Reflection */
+  @keyframes light-reflection {
+    0% {
+      transform: translate(-120%, -120%) rotate(45deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.4;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    50% {
+      transform: translate(0%, 0%) rotate(45deg);
+      opacity: 0.3;
+    }
+    60% {
+      opacity: 0.5;
+    }
+    90% {
+      opacity: 0.2;
+    }
+    100% {
+      transform: translate(120%, 120%) rotate(45deg);
+      opacity: 0;
+    }
+  }
+  
+  /* Ambient Rotation */
+  @keyframes ambient-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Outer Glow Pulse */
+  @keyframes glow-pulse {
+    0%, 100% {
+      opacity: 0.3;
+      filter: blur(80px);
+      transform: scale(1);
+    }
+    33% {
+      opacity: 0.5;
+      filter: blur(100px);
+      transform: scale(1.1);
+    }
+    66% {
+      opacity: 0.4;
+      filter: blur(90px);
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Inner Energy Pulse */
+  @keyframes inner-pulse {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(1.2);
+    }
+  }
+  
+  /* Shimmer Effect */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(30deg);
+    }
+    100% {
+      transform: translateX(100%) translateY(100%) rotate(30deg);
+    }
+  }
+  
+  /* Fade In Animation */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Chart Grow Animation */
+  @keyframes chart-grow {
+    from {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+    to {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Apply Animations */
+  .sphere-container {
+    animation: sphere-breathe 12s ease-in-out infinite;
+  }
+  
+  .sphere-blob {
+    animation: blob-morph 18s ease-in-out infinite;
+    border-radius: 50%;
+  }
+  
+  .sphere-rotate {
+    animation: ambient-rotate 40s linear infinite;
+  }
+  
+  .energy-layer-1 {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 107, 53, 0.9) 0%, rgba(255, 61, 0, 0.7) 40%, transparent 70%);
+    background-size: 200% 200%;
+    animation: energy-flow-1 15s ease-in-out infinite;
+  }
+  
+  .energy-layer-2 {
+    background: radial-gradient(circle at 70% 70%, rgba(211, 47, 47, 0.8) 0%, rgba(255, 61, 0, 0.6) 40%, transparent 70%);
+    background-size: 200% 200%;
+    animation: energy-flow-2 18s ease-in-out infinite;
+  }
+  
+  .energy-layer-3 {
+    background: radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.6) 0%, rgba(255, 61, 0, 0.4) 50%, transparent 80%);
+    background-size: 200% 200%;
+    animation: energy-flow-3 12s ease-in-out infinite;
+  }
+  
+  .light-gloss {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 30%, transparent 60%);
+    animation: light-reflection 10s ease-in-out infinite;
+  }
+  
+  .sphere-glow {
+    animation: glow-pulse 8s ease-in-out infinite;
+  }
+  
+  .inner-energy {
+    animation: inner-pulse 6s ease-in-out infinite;
+  }
+  
+  .shimmer-effect {
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    animation: shimmer 8s linear infinite;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+  
+  .animate-chart-grow {
+    animation: chart-grow 0.8s ease-out forwards;
+    transform-origin: bottom;
+  }
+
+  /* Added Animations for Premium SaaS Auth Update */
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(-5deg) rotateX(2deg); }
+    50% { transform: translateY(-8px) rotate(-4deg) rotateX(3deg); }
+  }
+
+  @keyframes float-fast {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  @keyframes bg-pan {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes input-glow {
+    0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+    50% { box-shadow: 0 0 15px 0px rgba(79, 70, 229, 0.15); }
+    100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  .animate-float-fast {
+    animation: float-fast 4s ease-in-out infinite;
+  }
+
+  .animate-bg-pan {
+    background-size: 200% 200%;
+    animation: bg-pan 15s ease infinite;
+  }
 }
+

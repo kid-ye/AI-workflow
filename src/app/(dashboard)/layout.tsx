@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Bot, GitBranch, Mic, Database, Phone, FileText, Settings, ChevronDown } from "lucide-react";
+import { LayoutDashboard, Bot, GitBranch, Mic, Database, Phone, FileText, Settings, ChevronDown, ArrowLeft } from "lucide-react";
 import DashboardNavbar from "@/components/DashboardNavbar";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -12,10 +12,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
       {/* Sidebar */}
       <aside className="fixed left-0 top-0 h-screen z-40 bg-muted w-64 flex flex-col border-r border-border">
-        <div className="p-6 border-b border-border">
-          <h1 className="text-2xl font-semibold tracking-tighter text-foreground">AUDITORY</h1>
-          <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-mono mt-1">ARCHITECT</p>
-        </div>
+        <Link href="/" className="group block p-6 border-b border-border hover:bg-background/50 transition-colors">
+          <h1 className="text-2xl font-semibold tracking-tighter text-foreground group-hover:text-accent transition-colors">AUDITORY</h1>
+          <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-mono mt-1 group-hover:text-foreground transition-colors">ARCHITECT</p>
+        </Link>
 
         <nav className="flex-1 px-3 py-6 space-y-1 overflow-y-auto">
           <Link href="/dashboard" className={`flex items-center gap-3 px-3 py-2.5 text-sm font-medium transition-colors ${pathname === '/dashboard' ? 'text-accent' : 'text-muted-foreground hover:text-foreground'}`}>
@@ -50,16 +50,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <Settings className="w-4 h-4" strokeWidth={1.5} />
             <span className="tracking-tight">Settings</span>
           </Link>
+            
+          <div className="pt-4 mt-6 border-t border-border/50">
+            <Link href="/" className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" strokeWidth={1.5} />
+              <span className="tracking-tight">Return to Site</span>
+            </Link>
+          </div>
         </nav>
 
         <div className="p-4 mt-auto border-t border-border">
-          <div className="flex items-center gap-3 p-3 bg-card">
-            <div className="w-8 h-8 bg-muted flex items-center justify-center overflow-hidden">
-              <img className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyEvMqGoLzdL-88KJR4Vul3NGFW9LwcooUvN_nFFqBI16AjLYe2AuG66N06gQiwHonOPQhXDLvEbsSRo6aYL8ZHlPjOxbJPxwr3sT8_hHS9WuFA1HG5hg3rl7nuys7gYW0jfakNNB63ZM1MFJKb-Bq4GnWT1UOvrfXuR7W3cQVjpBTErpH3Px9qCcgkqnSDqjzudvIw8YVI0RfNBSoeU3tTqcYr-KUFPymFkLc52hSeKHCxBMJTYurP3GSqsLTTxeeWuqoGz-UEu4" alt="Nexus Org" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-xs font-medium truncate tracking-tight">Nexus Org</p>
-              <p className="text-[10px] text-muted-foreground truncate font-mono tracking-wide">ENTERPRISE</p>
+          <div className="flex items-center gap-3 p-3 bg-card rounded-lg border border-border">
+            <div className="w-8 h-8 bg-muted flex items-center justify-center overflow-hidden rounded-md">
             </div>
             <ChevronDown className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} />
           </div>

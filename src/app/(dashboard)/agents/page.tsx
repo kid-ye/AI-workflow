@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Search, Plus, MoreHorizontal, ArrowDown, ArrowRight, X } from "lucide-react";
+import { Search, Plus, MoreHorizontal, ArrowDown, ArrowRight, X, Headset, Building2, PhoneOutgoing } from "lucide-react";
 
 type Agent = {
   id: number;
@@ -16,9 +16,9 @@ const INITIAL_AGENTS: Agent[] = [
 ];
 
 const PERSONAS = [
-  { emoji: "👩💻", title: "Customer Support", desc: "Field support inquiries with empathy and precision" },
-  { emoji: "🏢", title: "Front Desk", desc: "Handle transfers and general inquiries professionally" },
-  { emoji: "📞", title: "Sales Rep", desc: "Conduct outbound calls and book qualified meetings" },
+  { icon: Headset, title: "Customer Support", desc: "Field support inquiries with empathy and precision" },
+  { icon: Building2, title: "Front Desk", desc: "Handle transfers and general inquiries professionally" },
+  { icon: PhoneOutgoing, title: "Sales Rep", desc: "Conduct outbound calls and book qualified meetings" },
 ];
 
 export default function AgentsPage() {
@@ -78,7 +78,7 @@ export default function AgentsPage() {
                 className="bg-muted border border-border p-8 text-left flex flex-col gap-4 hover:border-accent transition-all group"
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-3xl">{p.emoji}</span>
+                  <span className="text-foreground p-3 bg-background rounded-lg border border-border group-hover:border-accent transition-colors"><p.icon className="w-6 h-6" strokeWidth={1.5} /></span>
                   <h3 className="text-xl font-semibold tracking-tight text-foreground">{p.title}</h3>
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed tracking-tight group-hover:text-foreground transition-colors">{p.desc}</p>
