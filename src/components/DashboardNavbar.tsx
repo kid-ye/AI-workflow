@@ -1,9 +1,10 @@
 "use client";
 import { Search, Bell, Grid, LogOut, User, Settings } from "lucide-react";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
 
 export default function DashboardNavbar() {
+  const { data: session } = useSession();
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -49,9 +50,15 @@ export default function DashboardNavbar() {
             onClick={() => setShowDropdown(!showDropdown)}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
-            <span className="text-xs font-medium text-foreground tracking-tight">Alex Rivera</span>
-            <div className="w-8 h-8 border border-border rounded-md">
-              <img className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkmKtfwmLwbcWdLR_iPqSRzkQg6WJq-QdMOzwSFuyNMAmTE2EqCZ3ZvYeaDeR5YDXuAPgIwfZgkNAD15fv_QMkvUGap3WcA0nIzkkLZtPQRFHKEOUfUlRFleOLcV99Xjyj02Gp5BnQMesHkYn4ZSbxBeuMSdpDAgLW2jrlprRVbyerPtl5bTBJO4t1RplndQeuOy5Wy1XynluyZwxEWiHGcO-OB7Tl9l4_rPsbjeS4z_669HFrvyi_Rs5NSM3rO4pYjEj4lyH2_mA" alt="Alex Rivera" />
+            <span className="text-xs font-medium text-foreground tracking-tight">{session?.user?.name}</span>
+            <div className="w-8 h-8 border border-border rounded-md overflow-hidden">
+              {session?.user?.image ? (
+                <img className="w-full h-full object-cover" src={session.user.image} alt={session.user.name ?? ""} />
+              ) : (
+                <div className="w-full h-full bg-muted flex items-center justify-center">
+                  <User className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} />
+                </div>
+              )}
             </div>
           </button>
 
@@ -59,8 +66,8 @@ export default function DashboardNavbar() {
           {showDropdown && (
             <div className="absolute right-0 top-full mt-2 w-56 bg-card border border-border rounded-xl shadow-lg overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
               <div className="p-3 border-b border-border">
-                <p className="text-sm font-medium text-foreground">Alex Rivera</p>
-                <p className="text-xs text-muted-foreground mt-0.5">alex.rivera@example.com</p>
+                <p className="text-sm font-medium text-foreground">{session?.user?.name}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{session?.user?.email}</p>
               </div>
               <div className="py-2">
                 <button className="w-full flex items-center gap-3 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors">

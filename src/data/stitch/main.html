@@ -18,16 +18,16 @@
               "primary-container": "#8083ff",
               "on-surface-variant": "#c7c4d7",
               "tertiary-container": "#00885d",
-              "surface-tint": "#c0c1ff",
+              "surface-tint": "#ff3d00",
               "tertiary": "#4edea3",
               "on-secondary": "#233144",
               "secondary-container": "#3c4a5e",
               "surface-bright": "#31394d",
-              "primary": "#c0c1ff",
+              "primary": "#ff3d00",
               "outline-variant": "#464554",
               "outline": "#908fa0",
               "on-secondary-container": "#abb9d1",
-              "background": "#0b1326",
+              "background": "#0a0a0a",
               "surface-container-low": "#131b2e",
               "on-primary": "#1000a9",
               "surface-variant": "#2d3449",
@@ -39,14 +39,14 @@
               "primary-fixed": "#e1e0ff",
               "secondary-fixed": "#d5e3fc",
               "on-tertiary": "#003824",
-              "surface": "#0b1326",
+              "surface": "#0a0a0a",
               "on-tertiary-container": "#000703",
               "on-background": "#dae2fd",
-              "primary-fixed-dim": "#c0c1ff",
+              "primary-fixed-dim": "#ff3d00",
               "surface-container-lowest": "#060e20",
               "on-primary-fixed": "#07006c",
               "inverse-surface": "#dae2fd",
-              "surface-dim": "#0b1326",
+              "surface-dim": "#0a0a0a",
               "surface-container-high": "#222a3d",
               "error": "#ffb4ab",
               "error-container": "#93000a",
@@ -77,7 +77,7 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         body {
-            background-color: #0b1326;
+            background-color: #0a0a0a;
             color: #dae2fd;
         }
         .glass-panel {
@@ -91,52 +91,52 @@
 </head>
 <body class="font-body antialiased selection:bg-primary-container selection:text-on-primary-container">
 <!-- SideNavBar Shell -->
-<aside class="fixed left-0 top-0 h-screen z-40 bg-slate-900 dark:bg-[#0b1326] font-['Inter'] antialiased tracking-tight docked left-0 h-full w-64 flex flex-col border-r border-slate-800 dark:border-none bg-slate-950/20 flat no shadows">
+<aside class="fixed left-0 top-0 h-screen z-40 bg-[#0a0a0a] dark:bg-[#0a0a0a] font-['Inter'] antialiased tracking-tight docked left-0 h-full w-64 flex flex-col border-r border-[#262626] border-[#262626] bg-slate-950/20 flat no shadows">
 <div class="p-6">
 <div class="flex items-center gap-3">
 <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center">
 <span class="material-symbols-outlined text-on-primary text-xl" data-icon="architecture">architecture</span>
 </div>
 <div>
-<h1 class="text-xl font-bold tracking-tighter text-indigo-100 dark:text-[#c0c1ff]">Auditory Architect</h1>
+<h1 class="text-xl font-bold tracking-tighter text-indigo-100 dark:text-[#ff3d00]">Auditory Architect</h1>
 <p class="text-[10px] uppercase tracking-[0.1em] text-on-surface-variant font-bold">Enterprise AI</p>
 </div>
 </div>
 </div>
 <nav class="flex-1 px-4 space-y-1 mt-4">
 <!-- Dashboard (Active) -->
-<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-all duration-200 bg-indigo-500/10 text-indigo-400 dark:text-[#c0c1ff] font-semibold border-r-2 border-indigo-400" href="#">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-all duration-200 bg-[#ff3d00]/10 text-indigo-400 dark:text-[#ff3d00] font-semibold border-r-2 border-[#ff3d00]" href="#">
 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
 <span class="text-sm">Dashboard</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-slate-400 dark:text-[#c7c4d7] hover:text-indigo-300 hover:bg-slate-800/50 dark:hover:bg-[#131b2e]" href="#">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a]" href="#">
 <span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
 <span class="text-sm">Agents</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-slate-400 dark:text-[#c7c4d7] hover:text-indigo-300 hover:bg-slate-800/50 dark:hover:bg-[#131b2e]" href="#">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a]" href="#">
 <span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
 <span class="text-sm">Workflows</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-slate-400 dark:text-[#c7c4d7] hover:text-indigo-300 hover:bg-slate-800/50 dark:hover:bg-[#131b2e]" href="#">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a]" href="#">
 <span class="material-symbols-outlined" data-icon="record_voice_over">record_voice_over</span>
 <span class="text-sm">Voices</span>
 </a>
 <div class="py-4 px-4">
 <span class="text-[10px] font-bold text-outline tracking-widest uppercase">Infrastructure</span>
 </div>
-<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-slate-400 dark:text-[#c7c4d7] hover:text-indigo-300 hover:bg-slate-800/50 dark:hover:bg-[#131b2e]" href="#">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a]" href="#">
 <span class="material-symbols-outlined" data-icon="database">database</span>
 <span class="text-sm">Data Sources</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-slate-400 dark:text-[#c7c4d7] hover:text-indigo-300 hover:bg-slate-800/50 dark:hover:bg-[#131b2e]" href="#">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a]" href="#">
 <span class="material-symbols-outlined" data-icon="settings_phone">settings_phone</span>
 <span class="text-sm">Telephony</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-slate-400 dark:text-[#c7c4d7] hover:text-indigo-300 hover:bg-slate-800/50 dark:hover:bg-[#131b2e]" href="#">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a]" href="#">
 <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
 <span class="text-sm">Logs</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-slate-400 dark:text-[#c7c4d7] hover:text-indigo-300 hover:bg-slate-800/50 dark:hover:bg-[#131b2e]" href="#">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full transition-colors duration-200 text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a]" href="#">
 <span class="material-symbols-outlined" data-icon="settings">settings</span>
 <span class="text-sm">Settings</span>
 </a>
@@ -154,7 +154,7 @@
 </div>
 </aside>
 <!-- TopAppBar Shell -->
-<header class="fixed top-0 right-0 left-64 h-16 flex items-center justify-between px-8 z-30 bg-slate-900/80 dark:bg-[#0b1326]/80 backdrop-blur-xl border-b border-slate-800/50 dark:border-none shadow-sm dark:shadow-none font-['Inter'] text-sm font-medium">
+<header class="fixed top-0 right-0 left-64 h-16 flex items-center justify-between px-8 z-30 bg-[#0a0a0a]/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#262626]/50 border-[#262626] shadow-sm dark:shadow-none font-['Inter'] text-sm font-medium">
 <div class="flex items-center gap-4 flex-1 max-w-xl">
 <div class="relative w-full">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="search">search</span>

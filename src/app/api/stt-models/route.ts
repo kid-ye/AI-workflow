@@ -7,7 +7,7 @@ export async function GET(request: Request) {
 
   try {
     const response = await fetch(
-      `http://192.168.1.9:8001/api/v1/voices/?skip=${skip}&limit=${limit}`,
+      `http://192.168.1.9:8001/api/v1/stt-models/?skip=${skip}&limit=${limit}`,
       {
         headers: {
           accept: "application/json",
@@ -17,7 +17,7 @@ export async function GET(request: Request) {
 
     if (!response.ok) {
       return NextResponse.json(
-        { error: "Failed to fetch voices" },
+        { error: "Failed to fetch STT models" },
         { status: response.status },
       );
     }
@@ -25,7 +25,7 @@ export async function GET(request: Request) {
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Error fetching voices:", error);
+    console.error("Error fetching STT models:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

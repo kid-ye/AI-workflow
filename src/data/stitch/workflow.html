@@ -18,16 +18,16 @@
               "primary-container": "#8083ff",
               "on-surface-variant": "#c7c4d7",
               "tertiary-container": "#00885d",
-              "surface-tint": "#c0c1ff",
+              "surface-tint": "#ff3d00",
               "tertiary": "#4edea3",
               "on-secondary": "#233144",
               "secondary-container": "#3c4a5e",
               "surface-bright": "#31394d",
-              "primary": "#c0c1ff",
+              "primary": "#ff3d00",
               "outline-variant": "#464554",
               "outline": "#908fa0",
               "on-secondary-container": "#abb9d1",
-              "background": "#0b1326",
+              "background": "#0a0a0a",
               "surface-container-low": "#131b2e",
               "on-primary": "#1000a9",
               "surface-container": "#171f33",
@@ -38,14 +38,14 @@
               "primary-fixed": "#e1e0ff",
               "secondary-fixed": "#d5e3fc",
               "on-tertiary": "#003824",
-              "surface": "#0b1326",
+              "surface": "#0a0a0a",
               "on-tertiary-container": "#000703",
               "on-background": "#dae2fd",
-              "primary-fixed-dim": "#c0c1ff",
+              "primary-fixed-dim": "#ff3d00",
               "surface-container-lowest": "#060e20",
               "on-primary-fixed": "#07006c",
               "inverse-surface": "#dae2fd",
-              "surface-dim": "#0b1326",
+              "surface-dim": "#0a0a0a",
               "surface-container-high": "#222a3d",
               "error": "#ffb4ab",
               "error-container": "#93000a",
@@ -82,6 +82,7 @@
             white-space: nowrap;
             direction: ltr;
         }
+        body { background-color: #0a0a0a !important; color: #fafafa !important; }
         .workflow-canvas {
             background-image: radial-gradient(#2d3449 1px, transparent 1px);
             background-size: 32px 32px;
@@ -95,45 +96,48 @@
             backdrop-filter: blur(20px);
             background-color: rgba(34, 42, 61, 0.8);
         }
+        .text-primary, [class*="text-\[#ff3d00\]"] { color: #ff3d00 !important; }
+        .bg-primary, [class*="bg-\[#ff3d00\]"] { background-color: #ff3d00 !important; }
+        .border-primary, [class*="border-\[#ff3d00\]"] { border-color: #ff3d00 !important; }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
 <!-- SideNavBar -->
-<aside class="fixed left-0 top-0 h-screen z-40 bg-slate-900 dark:bg-[#0b1326] border-r border-slate-800 dark:border-none bg-slate-950/20 w-64 flex flex-col font-['Inter'] antialiased tracking-tight">
+<aside class="fixed left-0 top-0 h-screen z-40 bg-[#0a0a0a] border-r border-[#262626] w-64 flex flex-col font-['Inter'] antialiased tracking-tight">
 <div class="p-6">
-<h1 class="text-xl font-bold tracking-tighter text-indigo-100 dark:text-[#c0c1ff]">Auditory Architect</h1>
+<h1 class="text-xl font-bold tracking-tighter text-[#ff3d00]">Auditory Architect</h1>
 <p class="text-xs text-on-surface-variant font-medium opacity-70">Enterprise AI</p>
 </div>
 <nav class="flex-1 px-3 space-y-1">
-<a class="flex items-center px-4 py-3 text-slate-400 dark:text-[#c7c4d7] hover:bg-slate-800/50 dark:hover:bg-[#131b2e] transition-colors duration-200 rounded-xl group" href="#">
+<a class="flex items-center px-4 py-3 text-[#737373] hover:bg-[#1a1a1a] transition-colors duration-200 rounded-xl group" href="#">
 <span class="material-symbols-outlined mr-3">dashboard</span>
                 Dashboard
             </a>
-<a class="flex items-center px-4 py-3 text-slate-400 dark:text-[#c7c4d7] hover:bg-slate-800/50 dark:hover:bg-[#131b2e] transition-colors duration-200 rounded-xl group" href="#">
+<a class="flex items-center px-4 py-3 text-[#737373] hover:bg-[#1a1a1a] transition-colors duration-200 rounded-xl group" href="#">
 <span class="material-symbols-outlined mr-3">smart_toy</span>
                 Agents
             </a>
-<a class="flex items-center px-4 py-3 bg-indigo-500/10 text-indigo-400 dark:text-[#c0c1ff] font-semibold border-r-2 border-indigo-400 transition-colors duration-200 rounded-l-xl group" href="#">
+<a class="flex items-center px-4 py-3 bg-[#ff3d00]/10 text-[#ff3d00] font-semibold border-r-2 border-[#ff3d00] transition-colors duration-200 rounded-l-xl group" href="#">
 <span class="material-symbols-outlined mr-3">account_tree</span>
                 Workflows
             </a>
-<a class="flex items-center px-4 py-3 text-slate-400 dark:text-[#c7c4d7] hover:bg-slate-800/50 dark:hover:bg-[#131b2e] transition-colors duration-200 rounded-xl group" href="#">
+<a class="flex items-center px-4 py-3 text-[#737373] hover:bg-[#1a1a1a] transition-colors duration-200 rounded-xl group" href="#">
 <span class="material-symbols-outlined mr-3">record_voice_over</span>
                 Voices
             </a>
-<a class="flex items-center px-4 py-3 text-slate-400 dark:text-[#c7c4d7] hover:bg-slate-800/50 dark:hover:bg-[#131b2e] transition-colors duration-200 rounded-xl group" href="#">
+<a class="flex items-center px-4 py-3 text-[#737373] hover:bg-[#1a1a1a] transition-colors duration-200 rounded-xl group" href="#">
 <span class="material-symbols-outlined mr-3">database</span>
                 Data Sources
             </a>
-<a class="flex items-center px-4 py-3 text-slate-400 dark:text-[#c7c4d7] hover:bg-slate-800/50 dark:hover:bg-[#131b2e] transition-colors duration-200 rounded-xl group" href="#">
+<a class="flex items-center px-4 py-3 text-[#737373] hover:bg-[#1a1a1a] transition-colors duration-200 rounded-xl group" href="#">
 <span class="material-symbols-outlined mr-3">settings_phone</span>
                 Telephony
             </a>
-<a class="flex items-center px-4 py-3 text-slate-400 dark:text-[#c7c4d7] hover:bg-slate-800/50 dark:hover:bg-[#131b2e] transition-colors duration-200 rounded-xl group" href="#">
+<a class="flex items-center px-4 py-3 text-[#737373] hover:bg-[#1a1a1a] transition-colors duration-200 rounded-xl group" href="#">
 <span class="material-symbols-outlined mr-3">assignment</span>
                 Logs
             </a>
-<a class="flex items-center px-4 py-3 text-slate-400 dark:text-[#c7c4d7] hover:bg-slate-800/50 dark:hover:bg-[#131b2e] transition-colors duration-200 rounded-xl group" href="#">
+<a class="flex items-center px-4 py-3 text-[#737373] hover:bg-[#1a1a1a] transition-colors duration-200 rounded-xl group" href="#">
 <span class="material-symbols-outlined mr-3">settings</span>
                 Settings
             </a>
@@ -151,7 +155,7 @@
 </div>
 </aside>
 <!-- TopAppBar -->
-<header class="fixed top-0 right-0 left-64 h-16 flex items-center justify-between px-8 z-30 bg-slate-900/80 dark:bg-[#0b1326]/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<header class="fixed top-0 right-0 left-64 h-16 flex items-center justify-between px-8 z-30 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#262626]">
 <div class="flex items-center space-x-4">
 <div class="flex items-center space-x-2 bg-surface-container-low px-4 py-1.5 rounded-full border border-outline-variant/5">
 <span class="material-symbols-outlined text-sm text-primary">account_tree</span>

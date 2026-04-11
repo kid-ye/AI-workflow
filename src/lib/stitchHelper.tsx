@@ -3,7 +3,13 @@
 import fs from "fs";
 import path from "path";
 
-export async function StitchScreen({ filename, stripShell }: { filename: string, stripShell?: boolean }) {
+export async function StitchScreen({
+  filename,
+  stripShell,
+}: {
+  filename: string;
+  stripShell?: boolean;
+}) {
   // Load raw HTML from localized disk template
   const filepath = path.join(process.cwd(), "src", "data", "stitch", filename);
 
@@ -30,21 +36,24 @@ export async function StitchScreen({ filename, stripShell }: { filename: string,
 
   const headHtml = headMatch ? headMatch[1] : "";
   let bodyHtml = bodyMatch ? bodyMatch[1] : "";
-  
+
   if (stripShell) {
     bodyHtml = bodyHtml.replace(/<aside[\s\S]*?<\/aside>/i, "");
     bodyHtml = bodyHtml.replace(/<header[\s\S]*?<\/header>/i, "");
-    
+
     // Remove ALL hardcoded margin-left/padding constraints since the Layout wrapper handles it
     bodyHtml = bodyHtml.replace(/\bml-64\b/g, "");
     bodyHtml = bodyHtml.replace(/\bpl-64\b/g, "");
     bodyHtml = bodyHtml.replace(/\bmt-16\b/g, "");
-    bodyHtml = bodyHtml.replace(/\bpt-24\b/g, "pt-8"); 
+    bodyHtml = bodyHtml.replace(/\bpt-24\b/g, "pt-8");
     bodyHtml = bodyHtml.replace(/\bpt-16\b/g, "");
 
     // Apply max-width constraint to dashboard specifically
     if (filename === "dashboard.html" || filename === "logs.html") {
-      bodyHtml = bodyHtml.replace(/<main([^>]*)class="([^"]*)"/i, '<main$1class="$2 max-w-[1200px] mx-auto w-full"');
+      bodyHtml = bodyHtml.replace(
+        /<main([^>]*)class="([^"]*)"/i,
+        '<main$1class="$2 max-w-[1200px] mx-auto w-full"',
+      );
     }
   }
 
@@ -196,5 +205,3 @@ export async function StitchScreen({ filename, stripShell }: { filename: string,
     </>
   );
 }
-
-

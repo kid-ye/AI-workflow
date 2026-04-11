@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ArrowRight, Check, TrendingUp, Shield, Eye, Zap, Send } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  TrendingUp,
+  Shield,
+  Eye,
+  Zap,
+  Send,
+} from "lucide-react";
 
 export default function LandingPage() {
   const [activeTab, setActiveTab] = useState(0);
@@ -15,41 +23,47 @@ export default function LandingPage() {
   const tabs = [
     {
       title: "AI Studio",
-      content: "Design and generate high-quality AI content including voice, audio, and automated workflows."
+      content:
+        "Design and generate high-quality AI content including voice, audio, and automated workflows.",
     },
     {
       title: "Conversational Agents",
-      content: "Deploy intelligent agents that understand, respond, and act in real-time across multiple channels."
+      content:
+        "Deploy intelligent agents that understand, respond, and act in real-time across multiple channels.",
     },
     {
       title: "Developer API",
-      content: "Integrate powerful AI capabilities into your applications with flexible and scalable APIs."
-    }
+      content:
+        "Integrate powerful AI capabilities into your applications with flexible and scalable APIs.",
+    },
   ];
 
   const features = [
     {
       icon: <Zap className="w-6 h-6" />,
       title: "Reliability",
-      description: "Ensure consistent performance with enterprise-grade infrastructure."
+      description:
+        "Ensure consistent performance with enterprise-grade infrastructure.",
     },
     {
       icon: <Shield className="w-6 h-6" />,
       title: "Security",
-      description: "Protect your data with advanced encryption and strict access control."
+      description:
+        "Protect your data with advanced encryption and strict access control.",
     },
     {
       icon: <Eye className="w-6 h-6" />,
       title: "Transparency",
-      description: "Understand how your AI systems behave with detailed insights."
-    }
+      description:
+        "Understand how your AI systems behave with detailed insights.",
+    },
   ];
 
   const chatMessages = [
     { text: "Can you help me with my order?", sender: "user" },
     { text: "Sure. Could you share your order ID?", sender: "ai" },
     { text: "It's #A12893", sender: "user" },
-    { text: "Got it. Your request has been processed.", sender: "ai" }
+    { text: "Got it. Your request has been processed.", sender: "ai" },
   ];
 
   return (
@@ -60,24 +74,57 @@ export default function LandingPage() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <span className="text-2xl font-bold tracking-tight">RevAI</span>
+              <span className="text-2xl font-bold tracking-tight">
+                Revoice labs
+              </span>
             </div>
 
             {/* Nav Links */}
             <div className="hidden md:flex items-center gap-8">
-              <a href="#platform" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Platform</a>
-              <a href="#solutions" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Solutions</a>
-              <a href="#developers" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Developers</a>
-              <a href="#resources" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Resources</a>
-              <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
+              <a
+                href="#platform"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Platform
+              </a>
+              <a
+                href="#solutions"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Solutions
+              </a>
+              <a
+                href="#developers"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Developers
+              </a>
+              <a
+                href="#resources"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Resources
+              </a>
+              <a
+                href="#pricing"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Pricing
+              </a>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex items-center gap-3">
-              <a href="#contact" className="hidden sm:block text-sm font-medium text-foreground hover:text-accent transition-colors px-4 py-2">
+              <a
+                href="#contact"
+                className="hidden sm:block text-sm font-medium text-foreground hover:text-accent transition-colors px-4 py-2"
+              >
                 Contact sales
               </a>
-              <a href="/login" className="text-sm font-semibold bg-accent text-accent-foreground px-5 py-2 rounded-lg hover:bg-accent/90 transition-all hover:shadow-lg hover:shadow-accent/20">
+              <a
+                href="/login"
+                className="text-sm font-semibold bg-accent text-accent-foreground px-5 py-2 rounded-lg hover:bg-accent/90 transition-all hover:shadow-lg hover:shadow-accent/20"
+              >
                 Get started
               </a>
             </div>
@@ -90,30 +137,41 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left: Text */}
-            <div className={`space-y-8 transition-all duration-1000 relative z-10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div
+              className={`space-y-8 transition-all duration-1000 relative z-10 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            >
               <h1 className="text-5xl lg:text-7xl font-bold tracking-tighter leading-tight">
                 Build intelligent systems that feel{" "}
                 <span className="text-accent">human</span>
               </h1>
-              
+
               <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl">
-                Create, deploy, and scale AI-powered experiences across voice, chat, and automation. Designed for developers and enterprises.
+                Create, deploy, and scale AI-powered experiences across voice,
+                chat, and automation. Designed for developers and enterprises.
               </p>
 
-              <div className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <a href="/login" className="group inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-8 py-4 rounded-xl font-semibold text-base hover:bg-accent/90 transition-all hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5">
+              <div
+                className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              >
+                <a
+                  href="/login"
+                  className="group inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-8 py-4 rounded-xl font-semibold text-base hover:bg-accent/90 transition-all hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5"
+                >
                   Start building
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
-                <a href="#contact" className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-base border border-border hover:bg-muted transition-all">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-base border border-border hover:bg-muted transition-all"
+                >
                   Talk to sales
                 </a>
               </div>
             </div>
 
-            {/* Right: Animated Sphere */}
+            {/* Right: Empty space */}
             <div className="relative h-[500px] flex items-center justify-center z-0">
-              <AnimatedSphere />
+              {/* Globe removed */}
             </div>
           </div>
         </div>
@@ -131,8 +189,8 @@ export default function LandingPage() {
                   onClick={() => setActiveTab(index)}
                   className={`w-full text-left px-6 py-4 rounded-xl font-semibold text-lg transition-all ${
                     activeTab === index
-                      ? 'bg-accent text-accent-foreground shadow-lg'
-                      : 'text-muted-foreground hover:bg-muted'
+                      ? "bg-accent text-accent-foreground shadow-lg"
+                      : "text-muted-foreground hover:bg-muted"
                   }`}
                 >
                   {tab.title}
@@ -142,11 +200,10 @@ export default function LandingPage() {
 
             {/* Tab Content */}
             <div className="lg:w-2/3 bg-card border border-border rounded-2xl p-8 lg:p-12">
-              <div
-                key={activeTab}
-                className="animate-fade-in"
-              >
-                <h3 className="text-3xl font-bold mb-4">{tabs[activeTab].title}</h3>
+              <div key={activeTab} className="animate-fade-in">
+                <h3 className="text-3xl font-bold mb-4">
+                  {tabs[activeTab].title}
+                </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   {tabs[activeTab].content}
                 </p>
@@ -166,7 +223,8 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                From content generation to real-time automation, build systems that operate at scale with reliability and speed.
+                From content generation to real-time automation, build systems
+                that operate at scale with reliability and speed.
               </p>
             </div>
 
@@ -190,7 +248,8 @@ export default function LandingPage() {
               AI that communicates naturally
             </h2>
             <p className="text-xl text-muted-foreground">
-              Enable human-like conversations across chat, voice, and messaging platforms.
+              Enable human-like conversations across chat, voice, and messaging
+              platforms.
             </p>
           </div>
 
@@ -224,7 +283,9 @@ export default function LandingPage() {
           <div className="max-w-3xl mx-auto bg-card border border-border rounded-2xl p-8">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <p className="text-sm text-muted-foreground mb-1">Success rate</p>
+                <p className="text-sm text-muted-foreground mb-1">
+                  Success rate
+                </p>
                 <p className="text-4xl font-bold">96.4%</p>
               </div>
               <TrendingUp className="w-8 h-8 text-accent" />
@@ -263,10 +324,16 @@ export default function LandingPage() {
           </h2>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#contact" className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-base border border-border hover:bg-muted transition-all">
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-base border border-border hover:bg-muted transition-all"
+            >
               Contact sales
             </a>
-            <a href="/login" className="group inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-8 py-4 rounded-xl font-semibold text-base hover:bg-accent/90 transition-all hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5">
+            <a
+              href="/login"
+              className="group inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-8 py-4 rounded-xl font-semibold text-base hover:bg-accent/90 transition-all hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5"
+            >
               Create your account
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -286,7 +353,8 @@ export default function LandingPage() {
             Get in touch with our team
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Have a question or want to collaborate? Share your details and our team will reach out to you shortly.
+            Have a question or want to collaborate? Share your details and our
+            team will reach out to you shortly.
           </p>
         </div>
 
@@ -301,46 +369,10 @@ export default function LandingPage() {
       <footer className="border-t border-border py-12">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center text-sm text-muted-foreground">
-            <p>© 2024 RevAI. All rights reserved.</p>
+            <p>© 2024 Revoice labs . All rights reserved.</p>
           </div>
         </div>
       </footer>
-    </div>
-  );
-}
-
-// Animated Sphere Component
-function AnimatedSphere() {
-  return (
-    <div className="relative w-[400px] h-[400px] z-0">
-      {/* Glow */}
-      <div className="absolute inset-0 flex items-center justify-center z-0">
-        <div className="w-[450px] h-[450px] bg-accent/20 rounded-full sphere-glow" />
-      </div>
-
-      {/* Main Sphere */}
-      <div className="relative w-full h-full sphere-container z-0">
-        <div className="absolute inset-0 sphere-rotate">
-          <div className="absolute inset-0 sphere-blob overflow-hidden rounded-full">
-            <div className="absolute inset-0 energy-layer-1" />
-            <div className="absolute inset-0 energy-layer-2" />
-            <div className="absolute inset-0 energy-layer-3" />
-            <div className="absolute inset-0 bg-gradient-radial from-accent/80 via-accent/60 to-accent/20" />
-            <div className="absolute inset-[30px] rounded-full bg-gradient-radial from-white/20 to-transparent inner-energy" />
-            <div className="absolute inset-0 light-gloss" />
-            <div className="absolute inset-0 overflow-hidden">
-              <div className="absolute inset-0 w-[200%] h-[200%] shimmer-effect" />
-            </div>
-            <div
-              className="absolute inset-0 opacity-15 mix-blend-overlay"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-              }}
-            />
-            <div className="absolute inset-0 rounded-full shadow-[inset_-15px_-15px_50px_rgba(0,0,0,0.6),inset_15px_15px_50px_rgba(255,255,255,0.15)]" />
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
@@ -356,7 +388,15 @@ function MetricRow({ label, value }: { label: string; value: string }) {
 }
 
 // Chat Bubble Component
-function ChatBubble({ text, sender, delay }: { text: string; sender: string; delay: number }) {
+function ChatBubble({
+  text,
+  sender,
+  delay,
+}: {
+  text: string;
+  sender: string;
+  delay: number;
+}) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -366,15 +406,15 @@ function ChatBubble({ text, sender, delay }: { text: string; sender: string; del
 
   return (
     <div
-      className={`flex ${sender === 'user' ? 'justify-end' : 'justify-start'} transition-all duration-500 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      className={`flex ${sender === "user" ? "justify-end" : "justify-start"} transition-all duration-500 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
     >
       <div
         className={`max-w-[80%] px-5 py-3 rounded-2xl ${
-          sender === 'user'
-            ? 'bg-accent text-accent-foreground rounded-tr-sm'
-            : 'bg-muted text-foreground rounded-tl-sm'
+          sender === "user"
+            ? "bg-accent text-accent-foreground rounded-tr-sm"
+            : "bg-muted text-foreground rounded-tl-sm"
         }`}
       >
         {text}
@@ -384,7 +424,17 @@ function ChatBubble({ text, sender, delay }: { text: string; sender: string; del
 }
 
 // Feature Card Component
-function FeatureCard({ icon, title, description, delay }: { icon: React.ReactNode; title: string; description: string; delay: number }) {
+function FeatureCard({
+  icon,
+  title,
+  description,
+  delay,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  delay: number;
+}) {
   return (
     <div
       className="group bg-card border border-border rounded-2xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
@@ -409,7 +459,7 @@ function AnalyticsChart() {
           className="flex-1 bg-accent/20 rounded-t-lg animate-chart-grow"
           style={{
             height: `${height}%`,
-            animationDelay: `${index * 100}ms`
+            animationDelay: `${index * 100}ms`,
           }}
         />
       ))}
@@ -437,12 +487,15 @@ function ContactForm() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     const { name, value, type } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
+      [name]:
+        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
     }));
   };
 
@@ -451,7 +504,10 @@ function ContactForm() {
       {/* Row 1: First Name & Last Name */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <label htmlFor="firstName" className="block text-sm font-medium text-muted-foreground">
+          <label
+            htmlFor="firstName"
+            className="block text-sm font-medium text-muted-foreground"
+          >
             First Name
           </label>
           <input
@@ -466,7 +522,10 @@ function ContactForm() {
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="lastName" className="block text-sm font-medium text-muted-foreground">
+          <label
+            htmlFor="lastName"
+            className="block text-sm font-medium text-muted-foreground"
+          >
             Last Name
           </label>
           <input
@@ -485,7 +544,10 @@ function ContactForm() {
       {/* Row 2: Company Name & Job Title */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <label htmlFor="company" className="block text-sm font-medium text-muted-foreground">
+          <label
+            htmlFor="company"
+            className="block text-sm font-medium text-muted-foreground"
+          >
             Company Name
           </label>
           <input
@@ -500,7 +562,10 @@ function ContactForm() {
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="jobTitle" className="block text-sm font-medium text-muted-foreground">
+          <label
+            htmlFor="jobTitle"
+            className="block text-sm font-medium text-muted-foreground"
+          >
             Job Title
           </label>
           <input
@@ -518,7 +583,10 @@ function ContactForm() {
 
       {/* Row 3: Work Email */}
       <div className="space-y-2">
-        <label htmlFor="email" className="block text-sm font-medium text-muted-foreground">
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-muted-foreground"
+        >
           Work Email
         </label>
         <input
@@ -535,7 +603,10 @@ function ContactForm() {
 
       {/* Row 4: Dropdown */}
       <div className="space-y-2">
-        <label htmlFor="department" className="block text-sm font-medium text-muted-foreground">
+        <label
+          htmlFor="department"
+          className="block text-sm font-medium text-muted-foreground"
+        >
           Who are you trying to reach?
         </label>
         <select
@@ -556,7 +627,10 @@ function ContactForm() {
 
       {/* Row 5: Textarea */}
       <div className="space-y-2">
-        <label htmlFor="message" className="block text-sm font-medium text-muted-foreground">
+        <label
+          htmlFor="message"
+          className="block text-sm font-medium text-muted-foreground"
+        >
           Tell us more about your inquiry
         </label>
         <textarea
@@ -582,8 +656,12 @@ function ContactForm() {
           className="mt-1 w-5 h-5 rounded border-border bg-input text-accent focus:ring-2 focus:ring-accent/20 cursor-pointer"
           required
         />
-        <label htmlFor="agreeToTerms" className="text-sm text-muted-foreground leading-relaxed">
-          I agree to receive communications and understand my data will be handled according to the{" "}
+        <label
+          htmlFor="agreeToTerms"
+          className="text-sm text-muted-foreground leading-relaxed"
+        >
+          I agree to receive communications and understand my data will be
+          handled according to the{" "}
           <a href="#" className="text-accent hover:text-accent/80 underline">
             privacy policy
           </a>
