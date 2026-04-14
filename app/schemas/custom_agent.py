@@ -46,7 +46,7 @@ class CustomAgentUpdate(BaseModel):
 
 
 class CustomAgentResponse(CustomAgentBase):
-    id: str
+    custom_agent_id: str
     created_at: datetime
 
     class Config:

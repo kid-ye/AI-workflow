@@ -15,7 +15,7 @@ class CustomAgentService:
     def get_agents(self, db: Session, skip: int = 0, limit: int = 100) -> List[CustomAgent]:
         return custom_agent_repo.get_all(db, skip, limit)
 
-    def get_agents_by_agent_id(self, db: Session, agent_id: str) -> List[CustomAgent]:
+    def get_agent_by_agent_id(self, db: Session, agent_id: str) -> Optional[CustomAgent]:
         return custom_agent_repo.get_by_agent_id(db, agent_id)
 
     def update_agent(self, db: Session, agent_id: str, data: CustomAgentUpdate) -> Optional[CustomAgent]:

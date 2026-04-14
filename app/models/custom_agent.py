@@ -6,8 +6,8 @@ from app.db.base import Base
 class CustomAgent(Base):
     __tablename__ = "custom_agent"
 
-    id = Column(String, primary_key=True, index=True)
-    agent_id = Column(String, ForeignKey("agents.id"), nullable=False)
+    custom_agent_id = Column(String, primary_key=True, index=True)
+    agent_id = Column(String, ForeignKey("agents.id"), unique=True, nullable=False)
     persona = Column(Text)
     scope = Column(Text)
     governance = Column(Text)

@@ -7,20 +7,20 @@ from app.schemas.custom_agent import CustomAgentCreate, CustomAgentUpdate
 
 class CustomAgentRepository:
     def create(self, db: Session, data: CustomAgentCreate) -> CustomAgent:
-        agent = CustomAgent(id=str(uuid.uuid4()), **data.model_dump())
+        agent = CustomAgent(custom_agent_id=str(uuid.uuid4()), **data.model_dump())
         db.add(agent)
         db.commit()
         db.refresh(agent)
         return agent
 
     def get_by_id(self, db: Session, agent_id: str) -> Optional[CustomAgent]:
-        return db.query(CustomAgent).filter(CustomAgent.id == agent_id).first()
+        return db.query(CustomAgent).filter(CustomAgent.custom_agent_id == agent_id).first()
 
     def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[CustomAgent]:
         return db.query(CustomAgent).offset(skip).limit(limit).all()
 
-    def get_by_agent_id(self, db: Session, agent_id: str) -> List[CustomAgent]:
-        return db.query(CustomAgent).filter(CustomAgent.agent_id == agent_id).all()
+    def get_by_agent_id(self, db: Session, agent_id: str) -> Optional[CustomAgent]:
+        return db.query(CustomAgent).filter(CustomAgent.agent_id == agent_id).first()
 
     def update(self, db: Session, agent_id: str, data: CustomAgentUpdate) -> Optional[CustomAgent]:
         agent = self.get_by_id(db, agent_id)
