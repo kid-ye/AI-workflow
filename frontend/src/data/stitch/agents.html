@@ -1,0 +1,691 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ReVoice Labs | Agent Builder</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#b9c7df",
+              "primary-container": "#8083ff",
+              "on-surface-variant": "#c7c4d7",
+              "tertiary-container": "#00885d",
+              "surface-tint": "#ff3d00",
+              tertiary: "#4edea3",
+              "on-secondary": "#233144",
+              "secondary-container": "#3c4a5e",
+              "surface-bright": "#31394d",
+              primary: "#ff3d00",
+              "outline-variant": "#464554",
+              outline: "#908fa0",
+              "on-secondary-container": "#abb9d1",
+              background: "#0a0a0a",
+              "surface-container-low": "#131b2e",
+              "on-primary": "#1000a9",
+              "surface-container": "#171f33",
+              "tertiary-fixed-dim": "#4edea3",
+              "inverse-primary": "#494bd6",
+              "tertiary-fixed": "#6ffbbe",
+              "on-secondary-fixed-variant": "#3a485b",
+              "primary-fixed": "#e1e0ff",
+              "secondary-fixed": "#d5e3fc",
+              "on-tertiary": "#003824",
+              surface: "#0a0a0a",
+              "on-tertiary-container": "#000703",
+              "on-background": "#dae2fd",
+              "primary-fixed-dim": "#ff3d00",
+              "surface-container-lowest": "#060e20",
+              "on-primary-fixed": "#07006c",
+              "inverse-surface": "#dae2fd",
+              "surface-dim": "#0a0a0a",
+              "surface-container-high": "#222a3d",
+              error: "#ffb4ab",
+              "error-container": "#93000a",
+              "on-primary-container": "#0d0096",
+              "surface-container-highest": "#2d3449",
+              "on-tertiary-fixed": "#002113",
+              "on-tertiary-fixed-variant": "#005236",
+              secondary: "#b9c7df",
+              "on-error": "#690005",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed": "#0d1c2e",
+              "on-surface": "#dae2fd",
+              "on-primary-fixed-variant": "#2f2ebe",
+              "inverse-on-surface": "#283044",
+            },
+            fontFamily: {
+              headline: ["Inter"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #0a0a0a;
+        color: #dae2fd;
+        font-family: "Inter", sans-serif;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        background: rgba(45, 52, 73, 0.8);
+      }
+      .gradient-primary {
+        background: linear-gradient(135deg, #ff3d00 0%, #8083ff 100%);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- SideNavBar -->
+    <aside
+      class="fixed left-0 top-0 h-screen z-40 bg-[#0a0a0a] dark:bg-[#0a0a0a] docked left-0 h-full w-64 flex flex-col border-r border-[#262626] border-[#262626] bg-slate-950/20 font-['Inter'] antialiased tracking-tight"
+    >
+      <div class="p-6 flex items-center gap-3">
+        <div
+          class="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center"
+        >
+          <span
+            class="material-symbols-outlined text-on-primary text-lg"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >graphic_eq</span
+          >
+        </div>
+        <div>
+          <h1
+            class="text-xl font-bold tracking-tighter text-indigo-100 dark:text-[#ff3d00]"
+          >
+            Auditory Architect
+          </h1>
+          <p
+            class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-bold"
+          >
+            Enterprise AI
+          </p>
+        </div>
+      </div>
+      <nav class="flex-1 px-4 space-y-1 mt-4 overflow-y-auto no-scrollbar">
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined">dashboard</span>
+          <span class="text-sm font-medium">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#ff3d00]/10 text-indigo-400 dark:text-[#ff3d00] font-semibold border-r-2 border-[#ff3d00]"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >smart_toy</span
+          >
+          <span class="text-sm font-medium">Agents</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined">account_tree</span>
+          <span class="text-sm font-medium">Workflows</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined">record_voice_over</span>
+          <span class="text-sm font-medium">Voices</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined">database</span>
+          <span class="text-sm font-medium">Data Sources</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined">settings_phone</span>
+          <span class="text-sm font-medium">Telephony</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined">assignment</span>
+          <span class="text-sm font-medium">Logs</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#737373] hover:text-[#fafafa] hover:bg-[#1a1a1a] transition-colors duration-200"
+          href="#"
+        >
+          <span class="material-symbols-outlined">settings</span>
+          <span class="text-sm font-medium">Settings</span>
+        </a>
+      </nav>
+      <div class="p-4 mt-auto border-t border-[#262626]/50">
+        <div
+          class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low"
+        >
+          <div
+            class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center overflow-hidden"
+          >
+            <img
+              class="w-full h-full object-cover"
+              data-alt="professional portrait of a tech executive in a dark suit with soft office lighting"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyEvMqGoLzdL-88KJR4Vul3NGFW9LwcooUvN_nFFqBI16AjLYe2AuG66N06gQiwHonOPQhXDLvEbsSRo6aYL8ZHlPjOxbJPxwr3sT8_hHS9WuFA1HG5hg3rl7nuys7gYW0jfakNNB63ZM1MFJKb-Bq4GnWT1UOvrfXuR7W3cQVjpBTErpH3Px9qCcgkqnSDqjzudvIw8YVI0RfNBSoeU3tTqcYr-KUFPymFkLc52hSeKHCxBMJTYurP3GSqsLTTxeeWuqoGz-UEu4"
+            />
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs font-bold truncate">Nexus Org</p>
+            <p class="text-[10px] text-on-surface-variant truncate">
+              Enterprise Plan
+            </p>
+          </div>
+          <span
+            class="material-symbols-outlined text-on-surface-variant text-sm"
+            >unfold_more</span
+          >
+        </div>
+      </div>
+    </aside>
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 right-0 left-64 h-16 flex items-center justify-between px-8 z-30 bg-[#0a0a0a]/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-[#262626]/50 border-[#262626] shadow-sm dark:shadow-none font-['Inter'] text-sm font-medium"
+    >
+      <div class="flex items-center gap-4 flex-1">
+        <div class="relative w-full max-w-md">
+          <span
+            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg"
+            >search</span
+          >
+          <input
+            class="w-full bg-surface-container-high border-none rounded-xl py-2 pl-10 pr-4 text-xs focus:ring-2 focus:ring-primary/40 placeholder:text-on-surface-variant/50"
+            placeholder="Search agents, workflows..."
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-6">
+        <div class="flex items-center gap-4 text-on-surface-variant">
+          <button
+            class="hover:text-white dark:hover:text-[#ff3d00] transition-all relative"
+          >
+            <span class="material-symbols-outlined">notifications</span>
+            <span
+              class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full border-2 border-[#0a0a0a]"
+            ></span>
+          </button>
+          <button
+            class="hover:text-white dark:hover:text-[#ff3d00] transition-all"
+          >
+            <span class="material-symbols-outlined">apps</span>
+          </button>
+        </div>
+        <div class="h-6 w-px bg-slate-800"></div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-bold text-on-surface">Alex Rivera</span>
+          <div class="w-8 h-8 rounded-full border border-primary/20 p-0.5">
+            <img
+              class="w-full h-full object-cover rounded-full"
+              data-alt="close-up portrait of a man with thoughtful expression in soft studio lighting"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkmKtfwmLwbcWdLR_iPqSRzkQg6WJq-QdMOzwSFuyNMAmTE2EqCZ3ZvYeaDeR5YDXuAPgIwfZgkNAD15fv_QMkvUGap3WcA0nIzkkLZtPQRFHKEOUfUlRFleOLcV99Xjyj02Gp5BnQMesHkYn4ZSbxBeuMSdpDAgLW2jrlprRVbyerPtl5bTBJO4t1RplndQeuOy5Wy1XynluyZwxEWiHGcO-OB7Tl9l4_rPsbjeS4z_669HFrvyi_Rs5NSM3rO4pYjEj4lyH2_mA"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Main Content Canvas -->
+    <main class="ml-64 mt-16 p-8 min-h-screen bg-surface">
+      <!-- Page Header -->
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <div class="flex items-center gap-2 text-primary mb-2">
+            <span class="material-symbols-outlined text-sm">arrow_back</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest"
+              >Back to Agents</span
+            >
+          </div>
+          <h2 class="text-3xl font-bold tracking-tight text-white">
+            Agent Builder
+          </h2>
+          <p class="text-on-surface-variant mt-1 text-sm">
+            Design and configure your neural voice architecture.
+          </p>
+        </div>
+        <div class="flex gap-3">
+          <button
+            class="px-6 py-2.5 rounded-xl text-sm font-semibold border border-outline-variant/30 hover:bg-surface-container-high transition-colors"
+          >
+            Test Voice
+          </button>
+          <button
+            class="px-8 py-2.5 rounded-xl text-sm font-bold text-on-primary gradient-primary shadow-lg shadow-primary/20"
+          >
+            Deploy Agent
+          </button>
+        </div>
+      </div>
+      <!-- Configuration Shell -->
+      <div class="grid grid-cols-12 gap-8">
+        <!-- Sidebar Tabs (Left) -->
+        <div class="col-span-3 space-y-2">
+          <div class="p-1.5 bg-surface-container-low rounded-xl">
+            <button
+              class="w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-surface-container-highest text-primary font-bold transition-all"
+            >
+              <span
+                class="material-symbols-outlined"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >edit_note</span
+              >
+              <span>Prompt</span>
+            </button>
+            <button
+              class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all"
+            >
+              <span class="material-symbols-outlined">spatial_audio_off</span>
+              <span>Voice</span>
+            </button>
+            <button
+              class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all"
+            >
+              <span class="material-symbols-outlined">alt_route</span>
+              <span>Workflow</span>
+            </button>
+            <button
+              class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all"
+            >
+              <span class="material-symbols-outlined">data_object</span>
+              <span>Data</span>
+            </button>
+            <button
+              class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all"
+            >
+              <span class="material-symbols-outlined">call</span>
+              <span>Telephony</span>
+            </button>
+          </div>
+          <!-- Agent Status Card -->
+          <div
+            class="p-6 bg-surface-container-low rounded-xl border border-outline-variant/10"
+          >
+            <h4
+              class="text-[10px] font-extrabold uppercase tracking-widest text-on-surface-variant mb-4"
+            >
+              LIVE STATUS
+            </h4>
+            <div class="flex items-center gap-4">
+              <div class="relative">
+                <div
+                  class="w-3 h-3 rounded-full bg-tertiary shadow-[0_0_12px_rgba(78,222,163,0.6)]"
+                ></div>
+              </div>
+              <span class="text-sm font-medium">Ready for Deployment</span>
+            </div>
+            <div class="mt-6 pt-6 border-t border-outline-variant/10 space-y-3">
+              <div class="flex justify-between text-xs">
+                <span class="text-on-surface-variant">LATENCY</span>
+                <span class="font-mono text-primary">120ms</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="text-on-surface-variant">RELIABILITY</span>
+                <span class="font-mono text-primary">99.8%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Main Editor Area (Right) -->
+        <div class="col-span-9 space-y-8">
+          <!-- General Identity Section -->
+          <div class="bg-surface-container-low p-8 rounded-xl">
+            <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+              <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+              Agent Identity
+            </h3>
+            <div class="grid grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label
+                  class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant"
+                  >AGENT NAME</label
+                >
+                <input
+                  class="w-full bg-surface-container-highest border-none rounded-xl py-3 px-4 text-sm focus:ring-2 focus:ring-primary/40 text-white font-medium"
+                  type="text"
+                  value="Customer Support Echo"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant"
+                  >LANGUAGE MODEL</label
+                >
+                <div class="relative">
+                  <select
+                    class="w-full bg-surface-container-highest border-none rounded-xl py-3 px-4 text-sm focus:ring-2 focus:ring-primary/40 appearance-none text-white font-medium"
+                  >
+                    <option>GPT-4o (Sonic Latency)</option>
+                    <option>Claude 3.5 Sonnet</option>
+                    <option>Llama 3 (Self-Hosted)</option>
+                  </select>
+                  <span
+                    class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant"
+                    >expand_more</span
+                  >
+                </div>
+              </div>
+              <div class="col-span-2 space-y-2">
+                <label
+                  class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant"
+                  >DESCRIPTION</label
+                >
+                <textarea
+                  class="w-full bg-surface-container-highest border-none rounded-xl py-3 px-4 text-sm focus:ring-2 focus:ring-primary/40 text-white"
+                  placeholder="What is the primary purpose of this agent?"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <!-- Voice Engine Bento -->
+          <div class="grid grid-cols-2 gap-8">
+            <div class="bg-surface-container-low p-8 rounded-xl flex flex-col">
+              <h3 class="text-lg font-bold mb-6">Acoustic Profile</h3>
+              <div class="space-y-6 flex-1">
+                <div class="space-y-4">
+                  <div class="flex justify-between items-center">
+                    <label
+                      class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant"
+                      >Tonal Warmth</label
+                    >
+                    <span class="text-[10px] font-mono text-primary">0.85</span>
+                  </div>
+                  <input
+                    class="w-full h-1.5 bg-surface-container-highest rounded-full appearance-none accent-primary cursor-pointer"
+                    type="range"
+                  />
+                </div>
+                <div class="space-y-4">
+                  <div class="flex justify-between items-center">
+                    <label
+                      class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant"
+                      >Speech Velocity</label
+                    >
+                    <span class="text-[10px] font-mono text-primary">1.1x</span>
+                  </div>
+                  <input
+                    class="w-full h-1.5 bg-surface-container-highest rounded-full appearance-none accent-primary cursor-pointer"
+                    type="range"
+                  />
+                </div>
+                <div class="space-y-4">
+                  <div class="flex justify-between items-center">
+                    <label
+                      class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant"
+                      >Pitch Variance</label
+                    >
+                    <span class="text-[10px] font-mono text-primary">High</span>
+                  </div>
+                  <input
+                    class="w-full h-1.5 bg-surface-container-highest rounded-full appearance-none accent-primary cursor-pointer"
+                    type="range"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="bg-surface-container-low p-8 rounded-xl flex flex-col">
+              <h3 class="text-lg font-bold mb-6">Voice Selection</h3>
+              <div class="space-y-4">
+                <div
+                  class="p-4 rounded-xl bg-surface-container-highest border-2 border-primary flex items-center gap-4"
+                >
+                  <div
+                    class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center"
+                  >
+                    <span
+                      class="material-symbols-outlined text-primary"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >face_6</span
+                    >
+                  </div>
+                  <div class="flex-1">
+                    <p class="text-sm font-bold">Aria Nova</p>
+                    <p class="text-[10px] text-on-surface-variant">
+                      Warm, Professional, Mid-range
+                    </p>
+                  </div>
+                  <span class="material-symbols-outlined text-primary"
+                    >check_circle</span
+                  >
+                </div>
+                <div
+                  class="p-4 rounded-xl bg-surface-container-highest/50 border border-transparent hover:border-outline-variant transition-all flex items-center gap-4 cursor-pointer"
+                >
+                  <div
+                    class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center"
+                  >
+                    <span
+                      class="material-symbols-outlined text-on-surface-variant"
+                      >face_5</span
+                    >
+                  </div>
+                  <div class="flex-1">
+                    <p class="text-sm font-bold text-on-surface-variant">
+                      Marcus Prime
+                    </p>
+                    <p class="text-[10px] text-on-surface-variant/70">
+                      Authoritative, Deep, Clear
+                    </p>
+                  </div>
+                </div>
+                <button
+                  class="w-full py-3 border border-dashed border-outline-variant rounded-xl text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary hover:border-primary transition-all"
+                >
+                  Custom Voice Clone
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Prompt Configuration Editor -->
+          <div class="bg-surface-container-low p-8 rounded-xl">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-lg font-bold">System Directive &amp; Prompt</h3>
+              <div class="flex gap-2">
+                <button
+                  class="p-2 rounded-lg bg-surface-container-highest text-on-surface-variant hover:text-white transition-all"
+                >
+                  <span class="material-symbols-outlined text-sm">history</span>
+                </button>
+                <button
+                  class="p-2 rounded-lg bg-surface-container-highest text-on-surface-variant hover:text-white transition-all"
+                >
+                  <span class="material-symbols-outlined text-sm"
+                    >auto_awesome</span
+                  >
+                </button>
+              </div>
+            </div>
+            <div
+              class="rounded-xl overflow-hidden bg-surface-container-lowest border border-outline-variant/10"
+            >
+              <div
+                class="flex items-center gap-4 px-4 py-2 bg-surface-container-high border-b border-outline-variant/10"
+              >
+                <span
+                  class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest"
+                  >SYSTEM_DIRECTIVE.MD</span
+                >
+                <div class="ml-auto flex items-center gap-3">
+                  <span class="text-[10px] text-on-surface-variant/50"
+                    >Markdown Supported</span
+                  >
+                  <div class="w-px h-3 bg-outline-variant/30"></div>
+                  <span
+                    class="material-symbols-outlined text-sm text-on-surface-variant"
+                    >fullscreen</span
+                  >
+                </div>
+              </div>
+              <textarea
+                class="w-full bg-transparent border-none text-sm font-mono text-indigo-100 p-6 focus:ring-0 leading-relaxed"
+                rows="10"
+              >
+# AGENT PERSONALITY
+You are Aria, a sophisticated and empathetic support agent for Nexus Cloud.
+Your primary goal is to resolve billing inquiries with maximum efficiency and a warm tone.
+
+# GUIDELINES
+- Never interrupt the customer unless they are stuck in a loop.
+- Use natural filler words like "I see" or "Got it" to show active listening.
+- If a customer mentions "refund", transition to the escalation workflow immediately.
+
+# DATA CONTEXT
+Always reference the user's latest transaction date: {{last_transaction_date}}</textarea
+              >
+            </div>
+            <div class="mt-8">
+              <h4
+                class="text-[10px] font-extrabold uppercase tracking-widest text-on-surface-variant mb-4"
+              >
+                RULE BUILDER
+              </h4>
+              <div class="space-y-3">
+                <div
+                  class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-highest/30 border border-outline-variant/10"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >rule</span
+                  >
+                  <div class="flex-1 text-sm">
+                    If
+                    <span
+                      class="px-2 py-0.5 rounded bg-surface-container-highest font-mono text-xs"
+                      >sentiment</span
+                    >
+                    is
+                    <span
+                      class="px-2 py-0.5 rounded bg-error-container text-error text-xs"
+                      >negative</span
+                    >
+                  </div>
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant text-sm"
+                    >arrow_forward</span
+                  >
+                  <div class="flex-1 text-sm text-on-surface-variant">
+                    Trigger
+                    <span class="text-white font-bold">Empathy Mode</span>
+                  </div>
+                  <button
+                    class="material-symbols-outlined text-on-surface-variant hover:text-error transition-all"
+                  >
+                    delete
+                  </button>
+                </div>
+                <button
+                  class="flex items-center gap-2 text-xs font-bold text-primary hover:opacity-80 transition-all p-2"
+                >
+                  <span class="material-symbols-outlined text-sm"
+                    >add_circle</span
+                  >
+                  Add Conditional Rule
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Footer Stats -->
+          <div class="grid grid-cols-4 gap-6 mb-8">
+            <div class="bg-surface-container-low p-4 rounded-xl">
+              <p
+                class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter"
+              >
+                Est. Cost / Call
+              </p>
+              <p class="text-xl font-bold text-white">$0.04</p>
+            </div>
+            <div class="bg-surface-container-low p-4 rounded-xl">
+              <p
+                class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter"
+              >
+                Token Context
+              </p>
+              <p class="text-xl font-bold text-white">128k</p>
+            </div>
+            <div class="bg-surface-container-low p-4 rounded-xl">
+              <p
+                class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter"
+              >
+                Model Weight
+              </p>
+              <p class="text-xl font-bold text-white">70B</p>
+            </div>
+            <div class="bg-surface-container-low p-4 rounded-xl">
+              <div class="flex items-center justify-between">
+                <p
+                  class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter"
+                >
+                  Auto-Save
+                </p>
+                <div class="w-1.5 h-1.5 rounded-full bg-tertiary"></div>
+              </div>
+              <p class="text-xl font-bold text-white">Active</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- FAB for Quick Test (Contextual) -->
+    <button
+      class="fixed bottom-8 right-8 w-14 h-14 rounded-full gradient-primary shadow-2xl shadow-primary/40 flex items-center justify-center group z-50"
+    >
+      <span
+        class="material-symbols-outlined text-on-primary text-3xl group-hover:scale-110 transition-transform"
+        style="font-variation-settings: &quot;FILL&quot; 1"
+        >mic</span
+      >
+      <div
+        class="absolute -top-12 right-0 bg-surface-bright px-4 py-2 rounded-lg text-xs font-bold text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl border border-outline-variant/20"
+      >
+        Quick Preview Talk
+      </div>
+    </button>
+  </body>
+</html>
