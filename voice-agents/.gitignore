@@ -1,0 +1,15 @@
+node_modules/
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.ds_store
+.DS_Store
+.idea/
+.vscode/
+*.log
+*.lock
+dist/
+build/
+coverage/ 
