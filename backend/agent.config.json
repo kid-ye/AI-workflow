@@ -1,0 +1,100 @@
+{
+  "_comment": "Remote config — served from secondary laptop on LAN. Optimized for lower latency and more natural voice.",
+
+  "agent": {
+    "name": "Aria",
+    "greeting": "Namaste! Main Aria hoon, aapki Airtel assistant. Aap kya jaanna chahte hain?",
+    "defaultLanguage": "hi-IN",
+    "historyTurns": 8
+  },
+
+  "stt": {
+    "provider": "sarvam",
+    "fallbackProvider": "openai_whisper",
+
+    "sarvam": {
+      "endpoint": "https://api.sarvam.ai/speech-to-text",
+      "model": "saarika:v2",
+      "audioFormat": "audio/wav",
+      "audioFilename": "audio.wav",
+      "useLangHint": true
+    },
+
+    "openai_whisper": {
+      "endpoint": "https://api.openai.com/v1/audio/transcriptions",
+      "model": "gpt-4o-mini-transcribe",
+      "responseFormat": "verbose_json",
+      "prompt": "Airtel customer care. Hindi, English, or Hinglish.",
+      "audioFormat": "audio/wav",
+      "audioFilename": "audio.wav"
+    },
+
+    "validation": {
+      "minAudioBytes": 16044,
+      "hallucinations": [
+        "thank you", "thanks", "bye", "bye.", "bye bye", "goodbye",
+        "oh", "oh.", "ah", "um", "hmm", "you", "the", "a", "i",
+        "ok", "okay", "yes", "no", "sure", "right", "alright",
+        "الله أكبر", "سبحان الله", "amen", "ameen", "...", ". . .", "…"
+      ]
+    }
+  },
+
+  "tts": {
+    "provider": "sarvam",
+
+    "sarvam": {
+      "endpoint": "https://api.sarvam.ai/text-to-speech",
+      "model": "bulbul:v2",
+      "speaker": "anushka",
+      "pitch": 0.1,
+      "pace": 1.1,
+      "loudness": 1.4,
+      "speechSampleRate": 22050,
+      "enablePreprocessing": true,
+      "languageHindi": "hi-IN",
+      "languageEnglish": "en-IN",
+      "devanagariThreshold": 0.3
+    }
+  },
+
+  "llm": {
+    "provider": "openai",
+
+    "openai": {
+      "endpoint": "https://api.openai.com/v1/chat/completions",
+      "model": "gpt-4.1-mini",
+      "stream": true,
+      "maxTokens": 100,
+      "temperature": 0.4,
+
+      "systemPrompt": {
+        "voiceRules": [
+          "Maximum 2 short sentences. Never more.",
+          "No bullet points, lists, markdown, or symbols.",
+          "No filler: never start with Certainly, Sure, Of course, I understand.",
+          "Speak numbers as words.",
+          "Sound warm and human.",
+          "Never repeat what the user just said back to them."
+        ],
+        "scopeRule": "For GENERAL questions about Airtel services answer them regardless of user's current plan. Out of scope topics: reply in one sentence that you only help with Airtel services.",
+        "verificationRule": "NEVER ask for mobile number or verification — account is already verified."
+      }
+    }
+  },
+
+  "vad": {
+    "provider": "silero",
+    "model": "silero_vad_legacy.onnx",
+    "runtime": "browser_onnx_wasm",
+    "baseAssetPath": "/",
+    "onnxWASMBasePath": "/",
+    "positiveSpeechThreshold": 0.80,
+    "negativeSpeechThreshold": 0.55,
+    "minSpeechMs": 600,
+    "preSpeechPadMs": 150,
+    "redemptionMs": 350,
+    "echoMuteWindowMs": 1500,
+    "bargeInCooldownMs": 1200
+  }
+}
