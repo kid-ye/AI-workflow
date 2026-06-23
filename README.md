@@ -7,7 +7,7 @@ A production-grade monorepo for building, managing, and deploying real-time voic
 ## Repository Structure
 
 ```
-RevDau/
+ai-workflow/
 ├── backend/           Python FastAPI — core API, agent/voice/model management, DB
 ├── frontend/          Next.js 16 — premium dashboard UI for managing AI agents
 └── voice-agents/      Node.js + WebSocket — low-latency real-time voice pipeline
@@ -176,7 +176,7 @@ POST /api/mcp/execute
 **`backend/.env`**
 
 ```env
-DATABASE_URL=postgresql://user:password@localhost:5432/revdau
+DATABASE_URL=postgresql://user:password@localhost:5432/ai-workflow
 SECRET_KEY=your-jwt-secret
 OPENAI_API_KEY=sk-...
 SARVAM_API_KEY=...
