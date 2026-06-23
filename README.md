@@ -1,4 +1,4 @@
-# RevDau — Real-Time Voice AI Platform
+# AI-workflow — Real-Time Voice AI Platform
 
 A production-grade monorepo for building, managing, and deploying real-time voice conversational AI agents. Supports multilingual STT/TTS, streaming LLM responses, interrupt handling, and a full agent configuration UI.
 
